@@ -13,7 +13,7 @@ export class MainView extends React.Component {
         _id: 1,
         Title: "Indiana Jones and the Raiders of the Lost Ark",
         Description: "In 1936, and archeologist and adventurer named Indiana Jones is hired by the U.S. government to find the Ark of the Covenant before Adolph Hitler's Nazis can obtain its awesome power.  Considered by any reasonable person to be the greatest movie ever made.",
-        ImagePath: "https://www.lifewire.com/thmb/6mJ80xBlb5VE_jvWfidgLKBjPak=/1200x1095/filters:fill(auto,1)/1200px-Wikipedia-logo-v2.svg-5a2fec2c0d327a0037277cd8.png"
+        ImagePath: "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.JIOuN-mbwGsCB5iSHvCAUAHaKj%26pid%3DApi&f=1"
       },
       {
         _id: 2,
@@ -52,7 +52,7 @@ export class MainView extends React.Component {
   render() {
     const { movies, selectedMovie } = this.state;
 
-    if (movies.length === 0) return <div className="main-view" />;
+    if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
 
     return (
       <div className="main-view">
