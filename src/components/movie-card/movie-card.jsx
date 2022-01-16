@@ -1,8 +1,9 @@
 import React from 'react';
 
 export class MovieCard extends React.Component {
+
   render() {
-    const { Movie } = this.props;
-    return <div className="movie-card">Some Title</div>;
+    const { movie, onMovieClick } = this.props;
+    return <div className="movie-card" onClick={() => { onMovieClick(movie); }}>{movie.Title}</div>;
   }
 }
