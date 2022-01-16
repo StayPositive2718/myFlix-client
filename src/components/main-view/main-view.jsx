@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 
 import { MovieCard } from '../movie-card/movie-card';
@@ -13,6 +14,16 @@ export class MainView extends React.Component {
     };
   }
 
+  componentDidMount() {
+    axios.get('https://matt-howell-myflix.herokuapp.com/movies').then(response => {
+      this.setState({
+        movies: response.data
+      });
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
   setSelectedMovie(newSelectedMovie) {
     this.setState({
       selectedMovie: newSelectedMovie
@@ -22,7 +33,7 @@ export class MainView extends React.Component {
   render() {
     const { movies, selectedMovie } = this.state;
 
-    if (movies.length === 0) return <div ClassName="main-view">The list is empty!</div>;
+    if (movies.length === 0) return <div className="main-view" />;
 
     return (
       <div className="main-view">
