@@ -8,7 +8,7 @@ export class MovieView extends React.Component {
     return (
       <div className="movie-view">
         <div className="movie-poster">
-          <img src={movie.ImagePath} />
+          <img src={movie.ImagePath + "?not-from-cache-please"} crossOrigin="Anonymous" />
         </div>
         <div className="movie-title">
           <span className="label">Title: </span>
