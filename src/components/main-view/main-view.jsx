@@ -2,9 +2,10 @@ import axios from 'axios';
 import React from 'react';
 import axios from 'axios';
 
-import { LoginView } from '../login-view/login-view';
-import { MovieCard } from '../movie-card/movie-card';
-import { MovieView } from '../movie-view/movie-view';
+import { LoginView } from '../login-view/login-view.jsx';
+import { MovieCard } from '../movie-card/movie-card.jsx';
+import { MovieView } from '../movie-view/movie-view.jsx';
+import { RegistrationView } from '../registration-view/registration-view.jsx';
 
 export class MainView extends React.Component {
 
@@ -45,7 +46,7 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, selectedMovie } = this.state;
+    const { user, movies, selectedMovie } = this.state;
 
     // If there is no user, the LoginView is CanvasRenderingContext2D.  If there is a user logged in, the user details are passed as a prop to the LoginView
 
