@@ -14,7 +14,6 @@ export function RegistrationView(props) {
     props.onLoggedIn(username);
   };
 
-
   return (
     <form>
       <label>
@@ -37,4 +36,8 @@ export function RegistrationView(props) {
       <button type="submit" onClick={handleSubmit}>Submit</button>
     </form>
   );
+}
+
+RegistrationView.proptypes = {
+  onLoggedin: PropTypes.string.isRequired
 }

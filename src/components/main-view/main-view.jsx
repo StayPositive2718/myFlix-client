@@ -1,11 +1,9 @@
-import axios from 'axios';
 import React from 'react';
 import axios from 'axios';
 
 import { LoginView } from '../login-view/login-view.jsx';
 import { MovieCard } from '../movie-card/movie-card.jsx';
 import { MovieView } from '../movie-view/movie-view.jsx';
-import { RegistrationView } from '../registration-view/registration-view.jsx';
 
 export class MainView extends React.Component {
 
