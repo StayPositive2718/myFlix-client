@@ -45,7 +45,7 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, selectedMovie } = this.state;
+    const { movies, selectedMovie, user } = this.state;
 
     // If there is no user, the LoginView is CanvasRenderingContext2D.  If there is a user logged in, the user details are passed as a prop to the LoginView
 
