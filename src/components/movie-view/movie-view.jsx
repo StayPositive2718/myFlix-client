@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class MovieView extends React.Component {
 
@@ -15,7 +16,7 @@ export class MovieView extends React.Component {
     return (
       <div className="movie-view">
         <div className="movie-poster">
-          <img src={movie.ImagePath + "?not-from-cache-please"} crossOrigin="Anonymous" />
+          <img src={movie.ImagePath} />
         </div>
         <div className="movie-title">
           <span className="label">Title: </span>
