@@ -25528,6 +25528,22 @@ class MovieView extends _reactDefault.default.Component {
         }));
     }
 }
+MovieView.proptypes = {
+    movie: PropTypes.shape({
+        Title: PropTypes.string.isRequired,
+        Description: PropTypes.string.isRequired,
+        Genre: PropTypes.shape({
+            Name: PropTypes.string.isRequired,
+            Description: PropTypes.string.isRequired
+        }),
+        Director: PropTypes.shape({
+            Name: PropTypes.string.isRequired,
+            Bio: PropTypes.string.isRequired,
+            Birthyear: PropTypes.string.isRequired
+        }),
+        ImagePath: PropTypes.string.isRequired
+    }).isRequired
+};
 
   $parcel$ReactRefreshHelpers$3741.postlude(module);
 } finally {
