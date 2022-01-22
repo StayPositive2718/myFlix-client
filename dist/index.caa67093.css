@@ -1,4 +1,52 @@
 .my-flix {
-  color: steelblue;
+  background-color: #221F1F;
+  height: 100vh;
+}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet');
+.login-view {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #221F1F;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+}
+.form-element {
+  margin-top: 20px;
+}
+.register-button {
+  margin-left: 40px !important;
+}
+.btn-primary {
+  background-color: #E50914 !important;
+  border-width: 0 !important;
+}
+.movie-card {
+  background-color: #221F1F !important;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.form-element {
+  margin-top: 40px;
+}
+
+.btn-primary {
+  background-color: #E50914 !important;
+  border-width: 0 !important;
+}
+.movie-view {
+  background-color: #221F1F !important;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet');
+.main-view {
+  background-color: #221F1F;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  padding-top: 50px;
+}
+.sticky-nav {
+  background-color: #221F1F !important;
 }
 /*# sourceMappingURL=index.caa67093.css.map */
