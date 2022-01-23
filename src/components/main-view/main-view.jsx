@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Row, Col, Container, Navbar } from 'react-bootstrap';
+import { Row, Col, Container, Navbar, Nav } from 'react-bootstrap';
 
 import { LoginView } from '../login-view/login-view.jsx';
 import { MovieCard } from '../movie-card/movie-card.jsx';
@@ -57,17 +57,26 @@ export class MainView extends React.Component {
 
     return (
       <>
-        <Navbar className="sticky-nav" fixed="top" bg="dark" variant="dark">
+        <Navbar className="nav" expand="lg" sticky="top" bg="#221F1F" variant="dark">
           <Container>
             <Navbar.Brand href="#home">MyFlix</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto">
+                <Nav.Link href="#home">Home</Nav.Link>
+                <Nav.Link href="">Login</Nav.Link>
+                <Nav.Link href="">Register</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
           </Container>
         </Navbar>
-        <Container>
-          <Row className="main-view justify-content-md-center">
+
+        <Container className="container">
+          <Row className="justify-content-md-center">
             {/* If the state of 'selectedMovie' is not null, that selected movie will be returned, otherwise, all movies will be returned */}
             {selectedMovie
               ? (
-                <Col md={4}>
+                <Col sm={12} md={4}>
                   <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
                 </Col>
               )

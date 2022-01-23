@@ -18,7 +18,7 @@ export class MovieView extends React.Component {
 
     return (
       <Container>
-        <Card>
+        <Card className="card-element">
           <Card.Img variant="top" src={movie.ImagePath + "?not-from-cache-please"} crossOrigin="Anonymous" />
           <Card.Body className="movie-view">
             <Card.Title>{movie.Title}</Card.Title>

@@ -1,6 +1,10 @@
-.my-flix {
+html, body, .my-flix {
+  box-sizing: border-box;
   background-color: #221F1F;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
 }
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet');
 .login-view {
@@ -9,12 +13,13 @@
   background-color: #221F1F;
   color: white;
   font-family: "Bebas Neue", sans-serif;
+  height: 100vh;
 }
 .form-element {
   margin-top: 20px;
 }
 .register-button {
-  margin-left: 40px !important;
+  margin-right: 40px;
 }
 .btn-primary {
   background-color: #E50914 !important;
@@ -26,8 +31,8 @@
   font-family: "Bebas Neue", sans-serif;
 }
 
-.form-element {
-  margin-top: 40px;
+.card-element {
+  margin-top: 80px;
 }
 
 .btn-primary {
@@ -40,13 +45,12 @@
   font-family: "Bebas Neue", sans-serif;
 }
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet');
-.main-view {
-  background-color: #221F1F;
-  color: white;
-  font-family: "Bebas Neue", sans-serif;
-  padding-top: 50px;
+.nav {
+  padding-top: 0 !important;
+  height: 70px !important;
 }
-.sticky-nav {
+.container {
   background-color: #221F1F !important;
+  height: 100% !important;
 }
 /*# sourceMappingURL=index.caa67093.css.map */

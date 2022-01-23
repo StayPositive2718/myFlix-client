@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Button, Row, Col, Container } from 'react-bootstrap';
+import { Form, Button, Row, Col, Container, Navbar, Nav } from 'react-bootstrap';
 
 import './login-view.scss';
 
@@ -17,41 +17,42 @@ export function LoginView(props) {
 
 
   return (
-    <Container fluid className="login-view">
-      <Row>
-        <Col></Col>
-        <Col>
-          <Form>
-            <Form.Group controlId="formUsername">
-              <Form.Label className="form-element" >Username:</Form.Label>
-              <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
-            </Form.Group>
-            <Form.Group controlId="formPassword">
-              <Form.Label className="form-element" >Password:</Form.Label>
-              <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
-            </Form.Group>
-            <Button className="form-element" variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
-            <Button variant="primary" type="submit" className="form-element register-button" onClick="">Not Registered? Click Here</Button>
-          </Form>
-        </Col>
-        <Col></Col>
-      </Row>
-    </Container>
-    // <form>
-    //   <label>
-    //     Username:
-    //     <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-    //   </label>
-    //   <label>
-    //     Password:
-    //     <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-    //   </label>
-    //   <button type="submit" onClick={handleSubmit}>Submit</button>
-    //   <label>
-    //     Not Registered?
-    //   </label>
-    //   <button type="button">Click Here</button>
-    // </form>
+    <>
+      <Navbar className="nav" expand="lg" sticky="top" bg="#221F1F" variant="dark">
+        <Container>
+          <Navbar.Brand href="#home">MyFlix</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="">Login</Nav.Link>
+              <Nav.Link href="">Register</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      <Container fluid className="login-view">
+        <Row>
+          <Col></Col>
+          <Col>
+            <Form>
+              <Form.Group controlId="formUsername">
+                <Form.Label className="form-element" >Username:</Form.Label>
+                <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+              </Form.Group>
+              <Form.Group controlId="formPassword">
+                <Form.Label className="form-element" >Password:</Form.Label>
+                <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
+              </Form.Group>
+            </Form>
+            <Button className="form-element register-button" variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
+            <Button variant="primary" type="submit" className="form-element" onClick={handleSubmit}>Not Registered? Click Here</Button>
+          </Col>
+          <Col></Col>
+        </Row>
+      </Container>
+    </>
   );
 }
 
