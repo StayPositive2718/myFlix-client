@@ -11,7 +11,7 @@ export function NavigationView(props) {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/profile">Profile</Nav.Link>
+            <Nav.Link href="/users">Profile</Nav.Link>
             <Nav.Link href="/">Login</Nav.Link>
             <Button variant="link" onClick={() => props.onLoggedOut()}>Logout</Button>
           </Nav>

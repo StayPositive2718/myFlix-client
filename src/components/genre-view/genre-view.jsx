@@ -6,7 +6,6 @@ import './genre-view.scss';
 
 export function GenreView(props) {
   const { genre, onBackClick } = props;
-  console.log(genre);
 
   return (
     <div className="genre-view">

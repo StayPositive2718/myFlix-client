@@ -10,11 +10,11 @@ export function DirectorView(props) {
   return (
     <div className="director-view">
       <div>
-        <span>Name :</span>
+        <span>Name: </span>
         <span>{director.Name}</span>
       </div>
       <div>
-        <span>About :</span>
+        <span>About: </span>
         <span>{director.Bio}</span>
       </div>
       <div>
