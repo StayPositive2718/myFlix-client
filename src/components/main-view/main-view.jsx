@@ -79,11 +79,12 @@ export class MainView extends React.Component {
 
   addToFavorites(movieId) {
     let token = localStorage.getItem('token');
-    let username = localStorage.getItem('user')
-    console.log(username);
-    axios.post(`https://matt-howell-myflix.herokuapp.com/users/${username}/movies/${movieId}`, {
-      headers: { Authorization: `Bearer ${token}` }
-    }).then(response => {
+    let username = localStorage.getItem('user');
+
+    axios.post(`https://matt-howell-myflix.herokuapp.com/users/${username}/movies/${movieId}`,
+      {},
+      { headers: { Authorization: `Bearer ${token}` } }
+    ).then(response => {
       console.log(response.data);
     }).catch(e => {
       console.error(e)
