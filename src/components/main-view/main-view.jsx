@@ -11,6 +11,7 @@ import { DirectorView } from '../director-view/director-view.jsx';
 import { GenreView } from '../genre-view/genre-view.jsx';
 import { NavigationView } from '../navigation-view/navigation-view.jsx';
 import { ProfileView } from '../profile-view/profile-view.jsx';
+import { UpdateUser } from '../update-view/update-user.jsx';
 
 import './main-view.scss';
 
@@ -92,7 +93,7 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { user, movies, username, Email, Birthday, FavoriteMovies } = this.state;
+    const { user, movies } = this.state;
 
     return (
       <>
@@ -159,7 +160,18 @@ export class MainView extends React.Component {
               );
               if (movies.length === 0) return <div className="main-view" />;
               return <Col md={8}>
-                <ProfileView user={this.state.user} movies={movies} onBackClick={() => history.goBack()} />
+                <ProfileView user={user} movies={movies} onBackClick={() => history.goBack()} />
+              </Col>
+            }} />
+            <Route path={"/users/update"} render={({ history, match }) => {
+              if (!user) return (
+                <Col>
+                  <LoginView onLoggedIn={user => this.onLoggedIn(user)} setUserProfile={user => this.setUserProfile(user)} />
+                </Col>
+              );
+              if (movies.length === 0) return <div className="main-view" />;
+              return <Col md={8}>
+                <UpdateUser user={user} movies={movies} onBackClick={() => history.goBack()} />
               </Col>
             }} />
           </Row>
