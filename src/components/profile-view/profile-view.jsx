@@ -1,78 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
-import { MovieCard } from '../movie-card/movie-card.jsx';
-import { UpdateUser } from '../update-view/update-user.jsx';
+import UserInfo from './user-info.jsx';
+import FavoriteMovies from './favorite-movies.jsx';
 
-export class ProfileView extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      userProfile: [],
-      FavoriteMovies: []
-    }
-  }
 
-  componentDidMount() {
+export function ProfileView(props) {
+  const [userProfile, setUserProfile] = useState([]);
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
+
+  function getUser() {
     const token = localStorage.getItem('token');
-    this.getUserInfo(token)
-  }
-
-  favoriteMoviesArray(Favorite_Movies) {
-    const favoriteMovies = [];
-    Favorite_Movies.forEach(movieId => {
-      favoriteMovies.push(this.props.movies.find(m => m._id === movieId))
-    });
-    return favoriteMovies
-  }
-
-  getUserInfo(token) {
-    axios.get(`https://matt-howell-myflix.herokuapp.com/users/${this.props.user}`, {
+    axios.get(`https://matt-howell-myflix.herokuapp.com/users/${props.user}`, {
       headers: { Authorization: `Bearer ${token}` }
     }).then(response => {
-      this.setState({
-        userProfile: response.data,
-        FavoriteMovies: this.favoriteMoviesArray(response.data.Favorite_Movies)
-      });
-      console.log(this.state.FavoriteMovies)
+      const favoriteMovieList = props.movies.filter(movie => response.data.Favorite_Movies.includes(movie._id));
+      setUserProfile(response.data);
+      setFavoriteMovies(favoriteMovieList)
     }).catch(function (error) {
       console.log(error);
     });
-  };
-
-
-  render() {
-
-    return (
-      <>
-        <Row>
-          {/* display user info */}
-          <div>
-            <p>Username: {this.state.userProfile.username}</p>
-            <p>Email: {this.state.userProfile.Email}</p>
-            <p>Birthday: {this.state.userProfile.Birthday}</p>
-            <Link to={"/users/update"}>
-              <Button variant="link">Update User Information</Button>
-            </Link>
-          </div>
-        </Row>
-        <Row>
-          {/* List of favorite movies */}
-          <div>
-            <h1>Favorite Movies</h1>
-          </div>
-          {this.state.FavoriteMovies.map(movie => (
-            <Col md={3} key={movie._id}>
-              <MovieCard movie={movie} />
-            </Col>
-          ))}
-        </Row>
-        <div>
-          {/* update user info */}
-        </div>
-      </>
-    )
   }
+
+  useEffect(() => {
+    getUser();
+  }, [])
+
+
+  return (
+    <>
+      <Row>
+        {/* display user info */}
+        <div>
+          <UserInfo username={userProfile.username} email={userProfile.Email} birthday={userProfile.Birthday} />
+
+          {/* <Link to={"/users/update"}>
+            <Button variant="link">Update User Information</Button>
+          </Link> */}
+        </div>
+      </Row>
+      <Row>
+        {/* List of favorite movies */}
+        <FavoriteMovies movieList={favoriteMovies} />
+
+      </Row>
+    </>
+  )
 }
+

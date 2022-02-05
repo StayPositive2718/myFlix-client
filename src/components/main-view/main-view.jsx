@@ -11,12 +11,11 @@ import { DirectorView } from '../director-view/director-view.jsx';
 import { GenreView } from '../genre-view/genre-view.jsx';
 import { NavigationView } from '../navigation-view/navigation-view.jsx';
 import { ProfileView } from '../profile-view/profile-view.jsx';
-import { UpdateUser } from '../update-view/update-user.jsx';
+// import { UpdateUser } from '../profile-view/update-user.jsx';
 
 import './main-view.scss';
 
 export class MainView extends React.Component {
-  mkf
 
   constructor() {
     super();
@@ -163,7 +162,7 @@ export class MainView extends React.Component {
                 <ProfileView user={user} movies={movies} onBackClick={() => history.goBack()} />
               </Col>
             }} />
-            <Route path={"/users/update"} render={({ history, match }) => {
+            {/* <Route path={"/users/update"} render={({ history, match }) => {
               if (!user) return (
                 <Col>
                   <LoginView onLoggedIn={user => this.onLoggedIn(user)} setUserProfile={user => this.setUserProfile(user)} />
@@ -173,7 +172,7 @@ export class MainView extends React.Component {
               return <Col md={8}>
                 <UpdateUser user={user} movies={movies} onBackClick={() => history.goBack()} />
               </Col>
-            }} />
+            }} /> */}
           </Row>
         </Router >
 
