@@ -10,16 +10,15 @@ import './movie-card.scss';
 export class MovieCard extends React.Component {
 
   render() {
-    const { movie } = this.props;
+    const { movie, addToFavorites } = this.props;
     return (
       <Card>
         <Card.Img variant="top" src={movie.ImagePath + "?not-from-cache-please"} crossOrigin="Anonymous" />
         <Card.Body className="movie-card">
-          {/* <Card.Title>{movie.Title}</Card.Title>
-          <Card.Text>{movie.Description}</Card.Text> */}
           <Link to={`/movies/${movie._id}`}>
             <Button variant="link">Open</Button>
           </Link>
+          <Button onClick={() => addToFavorites(movie._id)} variant="link">Add to Favorites</Button>
         </Card.Body>
       </Card>
     );

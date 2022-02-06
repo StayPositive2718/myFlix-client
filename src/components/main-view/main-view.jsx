@@ -11,7 +11,7 @@ import { DirectorView } from '../director-view/director-view.jsx';
 import { GenreView } from '../genre-view/genre-view.jsx';
 import { NavigationView } from '../navigation-view/navigation-view.jsx';
 import { ProfileView } from '../profile-view/profile-view.jsx';
-// import { UpdateUser } from '../profile-view/update-user.jsx';
+import { UpdateUser } from '../profile-view/update-user.jsx';
 
 import './main-view.scss';
 
@@ -68,13 +68,7 @@ export class MainView extends React.Component {
     this.setState({
       user: null
     });
-  }
-
-  onUpdatedUserInfo(newUsername) {
-    this.setState({
-      user: newUsername.user.username
-    });
-    localStorage.setItem('user', newUsername.user.username);
+    window.open('/', '_self');
   }
 
   addToFavorites(movieId) {
@@ -84,9 +78,7 @@ export class MainView extends React.Component {
     axios.post(`https://matt-howell-myflix.herokuapp.com/users/${username}/movies/${movieId}`,
       {},
       { headers: { Authorization: `Bearer ${token}` } }
-    ).then(response => {
-      console.log(response.data);
-    }).catch(e => {
+    ).catch(e => {
       console.error(e)
     });
   }
@@ -108,7 +100,7 @@ export class MainView extends React.Component {
               if (movies.length === 0) return <div className="main-view" />;
               return movies.map(m => (
                 <Col md={3} key={m._id}>
-                  <MovieCard movie={m} />
+                  <MovieCard movie={m} addToFavorites={movie => this.addToFavorites(movie)} />
                 </Col>
               ))
             }} />
@@ -126,7 +118,7 @@ export class MainView extends React.Component {
               );
               if (movies.length === 0) return <div className="main-view" />;
               return <Col md={8}>
-                <MovieView movie={movies.find(m => m._id === match.params.movieId)} addToFavorites={movie => this.addToFavorites(movie)} onBackClick={() => history.goBack()} />
+                <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
               </Col>
             }} />
             <Route path="/directors/:name" render={({ match, history }) => {
@@ -137,7 +129,7 @@ export class MainView extends React.Component {
               );
               if (movies.length === 0) return <div className="main-view" />;
               return <Col md={8}>
-                <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()} />
+                <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()} movies={movies} />
               </Col>
             }} />
             <Route path="/genres/:name" render={({ match, history }) => {
@@ -148,7 +140,7 @@ export class MainView extends React.Component {
               );
               if (movies.length === 0) return <div className="main-view" />;
               return <Col md={8}>
-                <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()} />
+                <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()} movies={movies} />
               </Col>
             }} />
             <Route path={"/users"} render={({ history, match }) => {
@@ -162,7 +154,7 @@ export class MainView extends React.Component {
                 <ProfileView user={user} movies={movies} onBackClick={() => history.goBack()} />
               </Col>
             }} />
-            {/* <Route path={"/users/update"} render={({ history, match }) => {
+            <Route path={"/users/update"} render={({ history, match }) => {
               if (!user) return (
                 <Col>
                   <LoginView onLoggedIn={user => this.onLoggedIn(user)} setUserProfile={user => this.setUserProfile(user)} />
@@ -172,7 +164,7 @@ export class MainView extends React.Component {
               return <Col md={8}>
                 <UpdateUser user={user} movies={movies} onBackClick={() => history.goBack()} />
               </Col>
-            }} /> */}
+            }} />
           </Row>
         </Router >
 

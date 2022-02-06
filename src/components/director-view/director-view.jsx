@@ -1,25 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
+
+import { MovieCard } from '../movie-card/movie-card.jsx'
 
 import './director-view.scss';
 
-export function DirectorView(props) {
-  const { director, onBackClick } = props;
+export function DirectorView({ director, onBackClick, movies }) {
+
+  const moviesByDirector = () => {
+    const movieObjList = movies.filter(movie => movie.Director.Name === director.Name);
+    console.log(movieObjList)
+
+    return movieObjList.map(m => (
+      <Col md={3} key={m._id}>
+        <MovieCard movie={m} />
+      </Col>
+    ))
+  }
 
   return (
     <div className="director-view">
       <div>
-        <span>Name: </span>
+        <span>Name:</span>
         <span>{director.Name}</span>
       </div>
       <div>
-        <span>About: </span>
+        <span>About:</span>
         <span>{director.Bio}</span>
       </div>
       <div>
-        <span>Born :</span>
+        <span>Born:</span>
         <span>{director.Birth}</span>
+      </div>
+      <div>
+        <span>Movies in this database by {director.Name}:</span>
+        <span>{moviesByDirector()}</span>
       </div>
       <div>
         <Button onClick={() => onBackClick()}>Back</Button>
