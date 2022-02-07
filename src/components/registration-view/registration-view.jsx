@@ -20,20 +20,20 @@ export function RegistrationView(props) {
       setUsernameErr('Username Required');
       isReq = false;
     } else if (username.length < 5) {
-      setUsernameErr('Username must be 5 charactyers long');
+      setUsernameErr('Username must be 5 characters long');
       isReq = false;
     }
     if (!password) {
       setPasswordErr('Password Required');
       isReq = false;
-    } else if (username.length < 5) {
-      setPasswordErr('Password must be 5 charactyers long');
+    } else if (password.length < 5) {
+      setPasswordErr('Password must be 5 characters long');
       isReq = false;
     }
     if (!email) {
       setEmailErr('Email Required');
       isReq = false;
-    } else if (username.length < 5) {
+    } else if (!email.includes('@')) {
       setEmailErr('Email not formatted correctly');
       isReq = false;
     }
@@ -51,7 +51,6 @@ export function RegistrationView(props) {
         Birthday: birthday
       }).then(response => {
         const data = response.data;
-        console.log(data);
         alert('Registration succesful, please login!');
         window.open('/', '_self');
       }).catch(e => {

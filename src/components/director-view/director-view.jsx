@@ -10,7 +10,6 @@ export function DirectorView({ director, onBackClick, movies }) {
 
   const moviesByDirector = () => {
     const movieObjList = movies.filter(movie => movie.Director.Name === director.Name);
-    console.log(movieObjList)
 
     return movieObjList.map(m => (
       <Col md={3} key={m._id}>
@@ -34,7 +33,7 @@ export function DirectorView({ director, onBackClick, movies }) {
         <span>{director.Birth}</span>
       </div>
       <div>
-        <span>Movies in this database by {director.Name}:</span>
+        <span>Movies in this collection by {director.Name}:</span>
         <span>{moviesByDirector()}</span>
       </div>
       <div>

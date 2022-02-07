@@ -26,11 +26,10 @@ export function GenreView(props) {
         <span>{genre.Name}</span>
       </div>
       <div>
-        <span>About: </span>
-        <span>{genre.Description}</span>
+        <span>{genre.Decription}</span>
       </div>
       <div>
-        <span>Other {genre.Name} movies in this collection</span>
+        <span>{genre.Name} movies in this collection</span>
         {moviesByGenre()}
       </div>
       <div>
