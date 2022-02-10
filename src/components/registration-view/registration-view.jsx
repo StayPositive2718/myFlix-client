@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 import './registration-view.scss';
 
-export function RegistrationView(props) {
+export function RegistrationView() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');

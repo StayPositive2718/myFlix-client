@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { Form, Button, Row, Container } from 'react-bootstrap';
+import { Form, Button, Row, Col, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import './login-view.scss';
@@ -53,25 +53,40 @@ export function LoginView(props) {
 
   return (
     <Container fluid className="login-view">
-      <Row>
-        <Form>
-          <Form.Group controlId="formUsername">
-            <Form.Label className="form-element" >Username:</Form.Label>
-            <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
-            {usernameErr && <p>{usernameErr}</p>}
-          </Form.Group>
-          <Form.Group controlId="formPassword">
-            <Form.Label className="form-element" >Password:</Form.Label>
-            <Form.Control type="password" placeholder="Enter password" value={password} onChange={e => setPassword(e.target.value)} />
-            {passwordErr && <p>{passwordErr}</p>}
-          </Form.Group>
-        </Form>
-        <Button className="form-element submit-button" variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
-        <Link to={`/register`}>
-          <Button variant="link">Register</Button>
-        </Link>
+      <Row className="justify-content-center">
+        <Col xs={12} sm={4} md={4}>
+          <Form>
+            <Form.Group controlId="formUsername">
+              <Form.Label className="form-element" >Username:</Form.Label>
+              <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
+              {usernameErr && <p>{usernameErr}</p>}
+            </Form.Group>
+            <Form.Group controlId="formPassword">
+              <Form.Label className="form-element" >Password:</Form.Label>
+              <Form.Control type="password" placeholder="Enter password" value={password} onChange={e => setPassword(e.target.value)} />
+              {passwordErr && <p>{passwordErr}</p>}
+            </Form.Group>
+          </Form>
+        </Col>
       </Row>
-    </Container>
+      <Row className="justify-content-center">
+        <Col xs={12} sm={4} md={4}>
+          <Container className="register-submit">
+            <Button className="form-element submit-button" variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
+          </Container>
+        </Col>
+      </Row>
+      <Row className="justify-content-center">
+        <Col xs={12} sm={4} md={4}>
+          <Container className="register-submit">
+            <Link to={`/register`}>
+              <Button variant="link">New User? Register Here!</Button>
+            </Link>
+          </Container>
+        </Col>
+      </Row>
+
+    </Container >
   );
 }
 

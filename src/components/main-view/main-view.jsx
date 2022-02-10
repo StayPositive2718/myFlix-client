@@ -89,7 +89,7 @@ export class MainView extends React.Component {
       <>
         <NavigationView onLoggedOut={() => this.onLoggedOut()} />
         <Router>
-          <Row className="main-view justify-content-md-center">
+          <Row className="main-view justify-content-center">
             <Route exact path="/" render={() => {
               if (!user) return (
                 <Col>
@@ -97,11 +97,9 @@ export class MainView extends React.Component {
                 </Col>
               );
               if (movies.length === 0) return <div className="main-view" />;
-              return movies.map(m => (
-                <Col md={3} key={m._id}>
-                  <MovieCard movie={m} addToFavorites={movie => this.addToFavorites(movie)} />
-                </Col>
-              ))
+              return <Col>
+                <MovieCard movies={movies} addToFavorites={movie => this.addToFavorites(movie)} />
+              </Col>
             }} />
             <Route path="/register" render={() => {
               if (user) return <Redirect to="/" />
@@ -149,8 +147,8 @@ export class MainView extends React.Component {
                 </Col>
               );
               if (movies.length === 0) return <div className="main-view" />;
-              return <Col md={8}>
-                <ProfileView user={user} movies={movies} onBackClick={() => history.goBack()} />
+              return <Col>
+                <ProfileView movies={movies} onBackClick={() => history.goBack()} />
               </Col>
             }} />
           </Row>

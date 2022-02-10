@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Row, Col, Button } from 'react-bootstrap'
+import { Row, Col, Button, Card, Container, Form } from 'react-bootstrap'
 import axios from 'axios';
 // import { Link } from 'react-router-dom';
 
 import UserInfo from './user-info.jsx'
 import FavoriteMovies from './favorite-movies.jsx'
-import { LoginView } from '../login-view/login-view.jsx';
-// import UpdateUser from './update-user.jsx'
 
+import './profile-view.scss'
 
 export function ProfileView(props) {
   const [userProfile, setUserProfile] = useState([]);
@@ -81,20 +80,15 @@ export function ProfileView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(newEmail)
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
     const isReq = validate();
     if (isReq) {
       axios.put(`https://matt-howell-myflix.herokuapp.com/users/${user}`,
-        {
-          username: newUsername,
-          Email: newEmail
-        },
+        params,
         {
           headers: { Authorization: `Bearer ${token}` }
         }).then(response => {
-          console.log(response.data.username);
           localStorage.setItem('user', response.data.username);
           getUser();
           alert('Update succesful');
@@ -105,17 +99,6 @@ export function ProfileView(props) {
         });
     }
   };
-
-  // const handleUpdate = (e) => {
-  //   if (e.target.name === "Password") {
-  //     setNewPassword(e.target.value);
-  //   } else if (e.target.name === "Username") {
-  //     setNewUsername(e.target.value)
-  //   } else if (e.target.name === "Email") {
-  //     setNewEmail(e.target.value)
-  //     console.log(newEmail)
-  //   }
-  // }
 
   const deleteUser = () => {
     const confirm = window.confirm('Are you dure you want to delete your account?');
@@ -138,51 +121,83 @@ export function ProfileView(props) {
 
   useEffect(() => {
     getUser();
+    window.scrollTo(0, 0);
   }, [])
 
   return (
-    <>
+    <Container>
+      <Row className="justify-content-center">
+        <Col xs={12} sm={4}>
+          <Card className="custom-class" >
+            <Card.Title>Your information</Card.Title>
+            <Card.Body>
+              <UserInfo username={userProfile.username} email={userProfile.Email} />
+            </Card.Body>
+          </Card>
+
+        </Col>
+        <Col xs={12} sm={4} md={4} className="justify-content-md-center">
+          <Card className="custom-class">
+            <Card.Title>Update your info</Card.Title>
+            <Card.Body>
+              <Form>
+                <Form.Group>
+                  <Form.Label>Update Username</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder={userProfile.username}
+                    value={newUsername}
+                    onChange={e => setNewUsername(e.target.value)} />
+                  {usernameErr && <p>{usernameErr}</p>}
+                </Form.Group>
+
+                <Form.Group>
+                  <Form.Label>Update Password</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='**********'
+                    value={newPassword}
+                    onChange={e => setNewPassword(e.target.value)} />
+                  {passwordErr && <p>{passwordErr}</p>}
+                </Form.Group>
+
+                <Form.Group>
+                  <Form.Label>Update Email</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder={userProfile.Email}
+                    value={newEmail}
+                    onChange={e => setNewEmail(e.target.value)} />
+                  {emailErr && <p>{emailErr}</p>}
+                </Form.Group>
+
+              </Form>
+
+              <Button variant='primary' type='submit' onClick={handleSubmit}>Update</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col xs={12} sm={4} md={4}>
+          <Container className="delete-user">
+            <Button onClick={() => deleteUser()}>Delete User Account</Button>
+          </Container>
+        </Col>
+
+      </Row>
+
       {/* display user info */}
-      <UserInfo username={userProfile.username} email={userProfile.Email} />
+
       {/* List of favorite movies */}
-      <FavoriteMovies movieList={favoriteMovies} removeFromFavorites={removeFromFavorites} />
+      <Row>
+        <Col>
+          <FavoriteMovies movieList={favoriteMovies} removeFromFavorites={removeFromFavorites} />
+        </Col>
+      </Row>
       {/* Update user information */}
-      <form className='update-form' onSubmit={(e) => handleSubmit(e)}>
-        <h2>Update user info</h2>
-        <label>Username: </label>
-        <input
-          type='text'
-          name='Username'
-          placeholder={userProfile.username}
-          value={newUsername}
-          onChange={e => setNewUsername(e.target.value)} />
-        {usernameErr && <p>{usernameErr}</p>}
 
-        <label>Password: </label>
-        <input
-          type='text'
-          name='Password'
-          placeholder='**********'
-          value={newPassword}
-          onChange={e => setNewPassword(e.target.value)} />
-        {passwordErr && <p>{passwordErr}</p>}
 
-        <label>Email address: </label>
-        <input
-          type='text'
-          name='Email'
-          placeholder={userProfile.Email}
-          value={newEmail}
-          onChange={e => setNewEmail(e.target.value)} />
-        {emailErr && <p>{emailErr}</p>}
 
-        <button variant='primary' type='submit'>
-          Update
-        </button>
-      </form>
-      )
-      <Button onClick={() => deleteUser()}>Delete User Account</Button>
-    </>
+    </Container >
   )
 }
 

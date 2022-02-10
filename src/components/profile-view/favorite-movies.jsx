@@ -1,30 +1,36 @@
 import React from 'react';
-import { Row, Card, Col, Button } from 'react-bootstrap';
+import { Row, Figure, Col, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+
+import './profile-view.scss'
 
 function FavoriteMovies({ movieList, removeFromFavorites }) {
   return (
-    <>
-      <h1>Favorite Movies</h1>
-      <Row className="justify-content-md-center">
-        {movieList.map((movie) => {
-          return (
-            <Col md={3} key={movie._id}>
-              <Card>
-                <Card.Img variant="top" src={movie.ImagePath + "?not-from-cache-please"} crossOrigin="Anonymous" />
-                <Card.Body className="movie-card">
+    <Card className="custom-class favorites-header">
+      <Card.Body>
+        <Row className="justify-content-center">
+          <Col xs={12}>
+            <h1>Favorite Movies</h1>
+          </Col>
+        </Row>
+        <Row className="justify-content-center">
+          {movieList.map((movie) => {
+            return (
+              <Col xs={12} md={6} lg={3} key={movie._id} className="fav-movies">
+                <Figure>
                   <Link to={`/movies/${movie._id}`}>
-                    <Button variant="link">Open</Button>
+                    <Figure.Image src={movie.ImagePath + "?not-from-cache-please"} crossOrigin="Anonymous" alt={movie.Title} />
                   </Link>
-                  <Button onClick={() => removeFromFavorites(movie._id)} variant="link">Remove from Favorites</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          )
-        })
-        }
-      </Row>
-    </>
+                </Figure>
+                <Button onClick={() => removeFromFavorites(movie._id)} variant="link">Remove from Favorites</Button>
+              </Col>
+            )
+          })
+          }
+        </Row>
+      </Card.Body>
+    </Card>
+
   )
 }
 export default FavoriteMovies

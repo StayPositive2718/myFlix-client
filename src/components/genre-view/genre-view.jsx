@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Col } from 'react-bootstrap';
+import { Button, Col, Card, Row } from 'react-bootstrap';
 
 import { MovieCard } from '../movie-card/movie-card.jsx'
 
@@ -12,30 +12,44 @@ export function GenreView(props) {
   const moviesByGenre = () => {
     const movieObjList = movies.filter(movie => movie.Genre.Name === genre.Name);
 
-    return movieObjList.map(m => (
-      <Col md={3} key={m._id}>
-        <MovieCard movie={m} />
-      </Col>
-    ))
+    return (
+      <Row>
+        <Col>
+          <MovieCard movies={movieObjList} />
+        </Col>
+      </Row>
+    )
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
+
   return (
-    <div className="genre-view">
-      <div>
-        <span>Name: </span>
-        <span>{genre.Name}</span>
-      </div>
-      <div>
-        <span>{genre.Decription}</span>
-      </div>
-      <div>
-        <span>{genre.Name} movies in this collection</span>
-        {moviesByGenre()}
-      </div>
-      <div>
-        <Button onClick={() => onBackClick()}>Back</Button>
-      </div>
-    </div>
+    <>
+      <Row className="justify-content-center">
+        <Col>
+          <Button onClick={() => onBackClick()}>Back</Button>
+        </Col>
+        <Col>
+          <Card className="custom-class" >
+            <Card.Title>Genre: {genre.Name}</Card.Title>
+            <Card.Body>
+              <p>About: {genre.Description}</p>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col></Col>
+      </Row>
+      <Row className="justify-content-center">
+        <Col>
+          <Card className="custom-class">
+            <Card.Title>{genre.Name} movies in this collection</Card.Title>
+            <Card.Body>{moviesByGenre()}</Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </>
   );
 }
 

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Row, Col } from 'react-bootstrap';
+import { Button, Row, Col, Card } from 'react-bootstrap';
 
 import { MovieCard } from '../movie-card/movie-card.jsx'
 
@@ -11,35 +11,43 @@ export function DirectorView({ director, onBackClick, movies }) {
   const moviesByDirector = () => {
     const movieObjList = movies.filter(movie => movie.Director.Name === director.Name);
 
-    return movieObjList.map(m => (
-      <Col md={3} key={m._id}>
-        <MovieCard movie={m} />
-      </Col>
-    ))
+    return (
+      <Row>
+        <Col>
+          <MovieCard movies={movieObjList} />
+        </Col>
+      </Row>
+    )
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
+
   return (
-    <div className="director-view">
-      <div>
-        <span>Name:</span>
-        <span>{director.Name}</span>
-      </div>
-      <div>
-        <span>About:</span>
-        <span>{director.Bio}</span>
-      </div>
-      <div>
-        <span>Born:</span>
-        <span>{director.Birth}</span>
-      </div>
-      <div>
-        <span>Movies in this collection by {director.Name}:</span>
-        <span>{moviesByDirector()}</span>
-      </div>
-      <div>
-        <Button onClick={() => onBackClick()}>Back</Button>
-      </div>
-    </div>
+    <>
+      <Row className="justify-content-center">
+        <Col><Button onClick={() => onBackClick()}>Back</Button></Col>
+        <Col xs={12} sm={6}>
+          <Card className="custom-class" >
+            <Card.Title>Director: {director.Name}</Card.Title>
+            <Card.Body>
+              <p>About: {director.Bio}</p>
+              <p>Born: {director.Birth}</p>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col></Col>
+      </Row>
+      <Row className="justify-content-center">
+        <Col>
+          <Card className="custom-class">
+            <Card.Title>Movies in this collection by {director.Name}</Card.Title>
+            <Card.Body>{moviesByDirector()}</Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </>
   );
 }
 

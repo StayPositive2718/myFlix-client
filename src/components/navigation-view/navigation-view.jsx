@@ -1,24 +1,26 @@
 import React from 'react';
-import { Row, Col, Navbar, Container, Nav, NavItem, Button } from 'react-bootstrap';
+import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+
+import './navigation-view.scss'
+
 export function NavigationView(props) {
 
   return (
-
-    <Navbar className="nav" expand="lg" sticky="top" bg="#221F1F" variant="dark">
+    <Navbar fluid expand="sm" sticky="top" variant="dark" className="color-nav">
       <Container fluid className="container">
         <Navbar.Brand>MyFlix</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="ml-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/users">Profile</Nav.Link>
-            <Nav.Link href="/">Login</Nav.Link>
-            <Button variant="link" onClick={() => props.onLoggedOut()}>Logout</Button>
+            <Nav.Item id="link-item">
+              <Button id="link-button" variant="link" onClick={() => props.onLoggedOut()}>Logout</Button>
+            </Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-
   )
 }
 
