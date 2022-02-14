@@ -9,17 +9,7 @@ import './genre-view.scss';
 export function GenreView(props) {
   const { genre, onBackClick, movies } = props;
 
-  const moviesByGenre = () => {
-    const movieObjList = movies.filter(movie => movie.Genre.Name === genre.Name);
-
-    return (
-      <Row>
-        <Col>
-          <MovieCard movies={movieObjList} />
-        </Col>
-      </Row>
-    )
-  }
+  const moviesByGenre = movies.filter(movie => movie.Genre.Name === genre.Name);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -45,7 +35,13 @@ export function GenreView(props) {
         <Col>
           <Card className="custom-class">
             <Card.Title>{genre.Name} movies in this collection</Card.Title>
-            <Card.Body>{moviesByGenre()}</Card.Body>
+            <Card.Body>
+              {moviesByGenre.map(m => (
+                <Col md={3} key={m._id}>
+                  <MovieCard movie={m} />
+                </Col>
+              ))};
+            </Card.Body>
           </Card>
         </Col>
       </Row>

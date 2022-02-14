@@ -8,17 +8,7 @@ import './director-view.scss';
 
 export function DirectorView({ director, onBackClick, movies }) {
 
-  const moviesByDirector = () => {
-    const movieObjList = movies.filter(movie => movie.Director.Name === director.Name);
-
-    return (
-      <Row>
-        <Col>
-          <MovieCard movies={movieObjList} />
-        </Col>
-      </Row>
-    )
-  }
+  const moviesByDirector = movies.filter(movie => movie.Director.Name === director.Name);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -43,7 +33,13 @@ export function DirectorView({ director, onBackClick, movies }) {
         <Col>
           <Card className="custom-class">
             <Card.Title>Movies in this collection by {director.Name}</Card.Title>
-            <Card.Body>{moviesByDirector()}</Card.Body>
+            <Card.Body>
+              {moviesByDirector.map(m => (
+                <Col md={3} key={m._id}>
+                  <MovieCard movie={m} />
+                </Col>
+              ))};
+            </Card.Body>
           </Card>
         </Col>
       </Row>

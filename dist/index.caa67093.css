@@ -9,17 +9,13 @@ html, body, .my-flix {
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet');
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet');
-.login-view {
+.register-view {
   padding-top: 50px;
   padding-bottom: 50px;
   background-color: #221F1F;
   color: white;
   font-family: "Bebas Neue", sans-serif;
   height: 100vh;
-}
-.register-submit {
-  text-align: center;
-  margin-top: 10px;
 }
 .form-element {
   margin-top: 20px;
@@ -28,6 +24,7 @@ html, body, .my-flix {
   background-color: #E50914 !important;
   border-width: 0 !important;
 }
+
 .card.custom-class {
   background-color: #221F1F;
 }
@@ -56,23 +53,6 @@ html, body, .my-flix {
 .form-control {
   margin-bottom: 10px;
 }
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet');
-.register-view {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  background-color: #221F1F;
-  color: white;
-  font-family: "Bebas Neue", sans-serif;
-  height: 100vh;
-}
-.form-element {
-  margin-top: 20px;
-}
-.btn-primary {
-  background-color: #E50914 !important;
-  border-width: 0 !important;
-}
-
 
 #link-button {
   width: 100%;
@@ -135,5 +115,25 @@ html, body, .my-flix {
 
 .form-control {
   margin-bottom: 10px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet');
+.login-view {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #221F1F;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  height: 100vh;
+}
+.register-submit {
+  text-align: center;
+  margin-top: 10px;
+}
+.form-element {
+  margin-top: 20px;
+}
+.btn-primary {
+  background-color: #E50914 !important;
+  border-width: 0 !important;
 }
 /*# sourceMappingURL=index.caa67093.css.map */

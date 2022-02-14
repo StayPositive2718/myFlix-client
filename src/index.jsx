@@ -3,15 +3,15 @@ import Container from 'react-bootstrap/Container';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { devToolsEnhancer } from 'redux-devtools-extension';
+// import { devToolsEnhancer } from 'redux-devtools-extension';
 import moviesApp from './reducers/reducers.js';
 
-import { MainView } from './components/main-view/main-view.jsx';
+import MainView from './components/main-view/main-view.jsx';
 
 //Import Statement to indicate that you need to bundle './index.scss'
 import './index.scss';
 
-const store = createStore(moviesApp, devToolsEnhancer);
+const store = createStore(moviesApp);
 
 
 //Main component (will eventually use all the others)
