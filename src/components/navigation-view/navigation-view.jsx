@@ -1,9 +1,9 @@
 import React from 'react';
-import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 
 import './navigation-view.scss'
 
-export function NavigationView(props) {
+export function NavigationView({ onLoggedOut }) {
 
   return (
     <Navbar fluid expand="sm" sticky="top" variant="dark" className="color-nav">
@@ -14,9 +14,7 @@ export function NavigationView(props) {
           <Nav className="ml-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/users">Profile</Nav.Link>
-            <Nav.Item id="link-item">
-              <Button id="link-button" variant="link" onClick={() => props.onLoggedOut()}>Logout</Button>
-            </Nav.Item>
+            <Nav.Link href="" onClick={onLoggedOut}>Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

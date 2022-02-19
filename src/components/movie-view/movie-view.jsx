@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { Card, Button, Row, Col, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import './movie-view.scss';
-
 export function MovieView({ movie, onBackClick }) {
 
   useEffect(() => {

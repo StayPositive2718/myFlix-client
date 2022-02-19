@@ -1,26 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card, Figure, Row, Col } from 'react-bootstrap';
+import { Button, Figure } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import './movie-card.scss';
 
-export function MovieCard({ movie, addToFavorites }) {
-  return (
-    <Card className="custom-class">
-      <Card.Body>
-        {/* <Row className="justify-content-center">
-          <Col xs={12} md={3} key={movie._id} className="fav-movies"> */}
-        <Figure>
-          <Link to={`/movies/${movie._id}`}>
-            <Figure.Image src={movie.ImagePath + "?not-from-cache-please"} crossOrigin="Anonymous" alt={movie.Title} />
-          </Link>
-        </Figure>
-        <Button onClick={() => addToFavorites(movie._id)} variant="link">Add to Favorites</Button>
-        {/* </Col>
-        </Row> */}
-      </Card.Body>
-    </Card>
+export function MovieCard({ movie }) {
+  //pushes selected movie to favorites list
+  const addToFavorites = (movieId) => {
+    let token = localStorage.getItem('token');
+    let username = localStorage.getItem('user');
+
+    axios.post(`https://matt-howell-myflix.herokuapp.com/users/${username}/movies/${movieId}`,
+      {},
+      { headers: { Authorization: `Bearer ${token}` } }
+    ).then(alert('Added to Favorites!')).catch(e => {
+      console.error(e)
+    });
+  }
+
+  return (<div className="movies">
+    <Figure>
+      <Link to={`/movies/${movie._id}`}>
+        <Figure.Image src={movie.ImagePath + "?not-from-cache-please"} crossOrigin="Anonymous" alt={movie.Title} />
+      </Link>
+      <Button onClick={() => addToFavorites(movie._id)} variant="link">Add to Favorites</Button>
+    </Figure>
+
+  </div>
   );
 }
 

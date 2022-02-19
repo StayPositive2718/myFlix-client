@@ -6,12 +6,11 @@ import { connect } from 'react-redux';
 import { Row, Col, } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
-import { setMovies } from '../../actions/actions.js';
+import { setMovies, setUser } from '../../actions/actions.js';
 import MovieList from '../movie-list/movie-list';
 
 import { MovieView } from '../movie-view/movie-view.jsx';
 import { LoginView } from '../login-view/login-view.jsx';
-// import { MovieCard } from '../movie-card/movie-card.jsx';
 import { RegistrationView } from '../registration-view/registration-view.jsx';
 import { DirectorView } from '../director-view/director-view.jsx';
 import { GenreView } from '../genre-view/genre-view.jsx';
@@ -24,70 +23,45 @@ class MainView extends React.Component {
 
   constructor() {
     super();
-    // Initial state is set to null
-    this.state = {
-      user: null,
+  }
+
+  componentDidMount() {
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.props.setUser(localStorage.getItem('user'));
+      this.getMovies(accessToken)
     }
   }
 
+  // propogates list of all movie objects in database
   getMovies(token) {
     axios.get('https://matt-howell-myflix.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}` }
     }).then(response => {
-      //Assign the result to the state
       this.props.setMovies(response.data);
     }).catch(function (error) {
       console.log(error);
     });
   }
 
-  componentDidMount() {
-    let accessToken = localStorage.getItem('token');
-    if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem('user')
-      });
-      this.getMovies(accessToken)
-    }
-  }
-
-  // When a user succesfully logs in, this function updates the 'user' property in state to that particular user
+  // When a user succesfully logs in, this function updates the 'user' property to that particular user
 
   onLoggedIn(authdata) {
-    this.setState({
-      user: authdata.user.username
-    });
-
+    this.props.setUser(authdata.user.username);
     localStorage.setItem('token', authdata.token);
     localStorage.setItem('user', authdata.user.username);
     this.getMovies(authdata.token);
   }
 
+  //logs out user 
   onLoggedOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    this.setState({
-      user: null
-    });
     window.open('/', '_self');
   }
 
-  addToFavorites(movieId) {
-    let token = localStorage.getItem('token');
-    let username = localStorage.getItem('user');
-
-    axios.post(`https://matt-howell-myflix.herokuapp.com/users/${username}/movies/${movieId}`,
-      {},
-      { headers: { Authorization: `Bearer ${token}` } }
-    ).then(alert('Added to Favorites!')).catch(e => {
-      console.error(e)
-    });
-  }
-
   render() {
-    // const { user, movies } = this.state;
-    let { movies } = this.props;
-    let { user } = this.state;
+    const { movies, user } = this.props;
 
     return (
       <>
@@ -101,11 +75,7 @@ class MainView extends React.Component {
                 </Col>
               );
               if (movies.length === 0) return <div className="main-view" />;
-              return <MovieList movies={movies} />;
-
-              // <Col>
-              //   <MovieCard movies={movies} addToFavorites={movie => this.addToFavorites(movie)} />
-              // </Col>
+              return <MovieList movies={movies} />
             }} />
             <Route path="/register" render={() => {
               if (user) return <Redirect to="/" />
@@ -159,16 +129,13 @@ class MainView extends React.Component {
             }} />
           </Row>
         </Router >
-
       </>
     );
   }
 }
 
 let mapStateToProps = state => {
-  return { movies: state.movies }
+  return { movies: state.movies, user: state.user }
 }
 
-export default connect(mapStateToProps, { setMovies })(MainView);
-
-// setUserProfile={user => this.setUserProfile(user)}
+export default connect(mapStateToProps, { setMovies, setUser })(MainView);

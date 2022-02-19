@@ -1,6 +1,5 @@
 import React from 'react';
-import { ModalTitle } from 'react-bootstrap';
-import Col from 'react-bootstrap/Col';
+import { Row, Col, Card } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input.jsx';

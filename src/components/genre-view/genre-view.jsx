@@ -9,15 +9,17 @@ import './genre-view.scss';
 export function GenreView(props) {
   const { genre, onBackClick, movies } = props;
 
+  // array of all movies in this genre
   const moviesByGenre = movies.filter(movie => movie.Genre.Name === genre.Name);
 
+  // scrolls to top of page when opening
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [])
 
   return (
     <>
-      <Row className="justify-content-center">
+      <Row>
         <Col>
           <Button onClick={() => onBackClick()}>Back</Button>
         </Col>
@@ -31,18 +33,19 @@ export function GenreView(props) {
         </Col>
         <Col></Col>
       </Row>
-      <Row className="justify-content-center">
+
+      <Row className="movies-header">
+        <Col xs={12}>
+          <h1>{genre.Name} movies in this collection</h1>
+        </Col>
         <Col>
-          <Card className="custom-class">
-            <Card.Title>{genre.Name} movies in this collection</Card.Title>
-            <Card.Body>
-              {moviesByGenre.map(m => (
-                <Col md={3} key={m._id}>
-                  <MovieCard movie={m} />
-                </Col>
-              ))};
-            </Card.Body>
-          </Card>
+          <Row className="justify-content-center">
+            {moviesByGenre.map(m => (
+              <Col Col xs={12} md={6} lg={3} key={m._id} className="all-movies">
+                <MovieCard movie={m} />
+              </Col>
+            ))}
+          </Row>
         </Col>
       </Row>
     </>

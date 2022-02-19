@@ -6,13 +6,14 @@ import { Link } from 'react-router-dom';
 
 import './login-view.scss';
 
-export function LoginView(props) {
+export function LoginView({ onLoggedIn }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   //Declare hook for each input
   const [usernameErr, setUsernameErr] = useState('');
   const [passwordErr, setPasswordErr] = useState('');
 
+  // client side validation
   const validate = () => {
     let isReq = true;
     if (!username) {
@@ -42,8 +43,7 @@ export function LoginView(props) {
         password: password
       }).then(response => {
         const data = response.data;
-        // console.log(data)
-        props.onLoggedIn(data);
+        onLoggedIn(data);
       }).catch(e => {
         console.error('no such user')
       });
@@ -85,7 +85,6 @@ export function LoginView(props) {
           </Container>
         </Col>
       </Row>
-
     </Container >
   );
 }

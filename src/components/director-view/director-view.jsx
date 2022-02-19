@@ -4,12 +4,12 @@ import { Button, Row, Col, Card } from 'react-bootstrap';
 
 import { MovieCard } from '../movie-card/movie-card.jsx'
 
-import './director-view.scss';
-
 export function DirectorView({ director, onBackClick, movies }) {
 
+  // array of all movies by director
   const moviesByDirector = movies.filter(movie => movie.Director.Name === director.Name);
 
+  // scrolls to top of page when opening
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [])
@@ -29,18 +29,18 @@ export function DirectorView({ director, onBackClick, movies }) {
         </Col>
         <Col></Col>
       </Row>
-      <Row className="justify-content-center">
+      <Row>
+        <Col xs={12} className="movies-header">
+          <h1>Movies in this collection by {director.Name}</h1>
+        </Col>
         <Col>
-          <Card className="custom-class">
-            <Card.Title>Movies in this collection by {director.Name}</Card.Title>
-            <Card.Body>
-              {moviesByDirector.map(m => (
-                <Col md={3} key={m._id}>
-                  <MovieCard movie={m} />
-                </Col>
-              ))};
-            </Card.Body>
-          </Card>
+          <Row className="justify-content-center">
+            {moviesByDirector.map(m => (
+              <Col Col xs={12} md={6} lg={3} key={m._id} className="all-movies">
+                <MovieCard movie={m} />
+              </Col>
+            ))}
+          </Row>
         </Col>
       </Row>
     </>

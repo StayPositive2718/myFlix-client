@@ -8,11 +8,11 @@ export function RegistrationView() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [birthday, setBirthday] = useState('');
   const [usernameErr, setUsernameErr] = useState('');
   const [passwordErr, setPasswordErr] = useState('');
   const [emailErr, setEmailErr] = useState('');
 
+  // client side validation
   const validate = () => {
     let isReq = true;
     if (!username) {
@@ -39,6 +39,7 @@ export function RegistrationView() {
     return isReq;
   }
 
+  // creates new user from form inputs
   const handleSubmit = (e) => {
     e.preventDefault();
     const isReq = validate();
@@ -47,9 +48,7 @@ export function RegistrationView() {
         username: username,
         password: password,
         Email: email,
-        Birthday: birthday
       }).then(response => {
-        const data = response.data;
         alert('Registration succesful, please login!');
         window.open('/', '_self');
       }).catch(e => {
@@ -79,10 +78,6 @@ export function RegistrationView() {
               <Form.Label className="form-element" >Email:</Form.Label>
               <Form.Control type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
               {emailErr && <p>{emailErr}</p>}
-            </Form.Group>
-            <Form.Group controlId="formBirthday">
-              <Form.Label className="form-element" >Birthday:</Form.Label>
-              <Form.Control type="birthday" onChange={e => setBirthday(e.target.value)} />
             </Form.Group>
           </Form>
           <Button className="form-element register-button" variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
