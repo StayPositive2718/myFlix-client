@@ -1,0 +1,42 @@
+.card.custom-class {
+  background-color: #221F1F;
+  justify-content: center;
+}
+
+.card.favorites-header {
+  text-align: center;
+}
+
+.update-user {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.fav-movies { 
+  margin-bottom: 15px;
+  figure {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: auto;
+    width: 100%;
+    img {
+      display: block;
+      height: 350px;
+      margin: auto;
+    }
+  }
+  button {
+    display: block;
+    margin: auto;
+  }
+}
+
+.card-title {
+  text-align: center;
+}
+
+.form-control {
+  margin-bottom: 10px;
+}

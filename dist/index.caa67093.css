@@ -1,4 +1,141 @@
-.my-flix {
-  color: steelblue;
+html, body, .my-flix {
+  box-sizing: border-box;
+  background-color: #221F1F;
+  width: 100%;
+  height: 100vn;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet');
+.register-view {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #221F1F;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  height: 100vh;
+}
+.form-element {
+  margin-top: 20px;
+}
+.btn-primary {
+  background-color: #E50914 !important;
+  border-width: 0 !important;
+}
+.card.custom-class {
+  background-color: #221F1F;
+}
+
+.movies {
+  margin-bottom: 15px;
+}
+.movies figure {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: auto;
+  width: 100%;
+}
+.movies figure img {
+  display: block;
+  height: 350px;
+  margin: auto;
+}
+.movies figure button {
+  display: block;
+  margin: auto;
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+.movies-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+#link-button {
+  width: 100%;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+#link-item {
+  margin-left: 0;
+}
+
+.color-nav {
+  height: 70px;
+  margin-top: 0;
+}
+
+.navbar {
+  background-color: #221F1F;
+  height: 70px;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+.card.custom-class {
+  background-color: #221F1F;
+  justify-content: center;
+}
+
+.card.favorites-header {
+  text-align: center;
+}
+
+.update-user {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.fav-movies {
+  margin-bottom: 15px;
+}
+.fav-movies figure {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: auto;
+  width: 100%;
+}
+.fav-movies figure img {
+  display: block;
+  height: 350px;
+  margin: auto;
+}
+.fav-movies button {
+  display: block;
+  margin: auto;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet');
+.login-view {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #221F1F;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  height: 100vh;
+}
+.register-submit {
+  text-align: center;
+  margin-top: 10px;
+}
+.form-element {
+  margin-top: 20px;
+}
+.btn-primary {
+  background-color: #E50914 !important;
+  border-width: 0 !important;
 }
 /*# sourceMappingURL=index.caa67093.css.map */

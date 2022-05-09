@@ -1,5 +1,11 @@
-$color: steelblue;
 
-.my-flix {
-  color: $color;
+
+html, body, .my-flix {
+  box-sizing: border-box;
+  background-color: #221F1F;
+  width: 100%;
+  height: 100vn;
+  color: white;
+  font-family: 'Bebas Neue', sans-serif;
 }
+

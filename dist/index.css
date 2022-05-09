@@ -1,0 +1,33 @@
+.movie-view {
+  background-color: #221F1F !important;
+}
+.movie-card {
+  background-color: #221F1F !important;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.card-element {
+  margin-top: 80px;
+}
+
+.btn-primary {
+  background-color: #E50914 !important;
+  border-width: 0 !important;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet');
+.nav {
+  padding-top: 0 !important;
+  height: 70px !important;
+}
+html, body, .my-flix {
+  box-sizing: border-box;
+  background-color: #221F1F;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+}
+/*# sourceMappingURL=index.css.map */
