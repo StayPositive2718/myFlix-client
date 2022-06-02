@@ -3,12 +3,12 @@
 
 This is the front-end (client side) part of the myFlix app based on its existing server-side code (REST API and database).
 
-You can access this responsive app [here](https://ml-myflix-react.netlify.app).
+You can access this responsive app [here].
 
 
 ## Built with
 
-Parcel, React, Axios, Redux, React-Bootstrap, [Movie API](https://github.com/MaiaraLopes/Movies_API).
+Parcel, React, Axios, Redux, React-Bootstrap, [Movie API]([https://github.com/StayPositive2718/movie-api.git]).
 
 
 ## Functionality
