@@ -8,7 +8,7 @@ You can access this responsive app [here].
 
 ## Built with
 
-Parcel, React, Axios, Redux, React-Bootstrap, [Movie API]([https://github.com/StayPositive2718/movie-api.git]).
+Parcel, React, Axios, Redux, React-Bootstrap, [Movie API](https://github.com/StayPositive2718/movie-api.git).
 
 
 ## Functionality
