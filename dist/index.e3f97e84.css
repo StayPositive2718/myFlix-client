@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet');
-
+@import "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet";
+@import "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet";
 .card.custom-class {
   background-color: #221f1f;
 }
@@ -150,9 +148,7 @@
 
 
 
-html,
-body,
-.my-flix {
+html, body, .my-flix {
   box-sizing: border-box;
   width: 100%;
   height: 100vn;
