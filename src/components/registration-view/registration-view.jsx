@@ -51,9 +51,9 @@ export function RegistrationView() {
       }).then(response => {
         alert('Registration succesful, please login!');
         window.open('/', '_self');
-      }).catch(e => {
-        console.error(response).
-          alert('registration unsuccesful');
+      }).catch(error => {
+        console.log(error)
+        alert('registration unsuccesful');
       });
     }
   };
